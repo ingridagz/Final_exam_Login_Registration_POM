@@ -1,9 +1,10 @@
-package lt.techin.tests.utils;
+package lt.techin.tests;
 
 import lt.techin.pages.LoginPage;
 import lt.techin.pages.RegisterPage;
 import lt.techin.pages.UserPage;
 import lt.techin.tests.BasePageTest;
+import lt.techin.tests.utils.UtilsTest;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
