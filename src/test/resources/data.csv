@@ -6,6 +6,6 @@ ValidName,1,1,Privaloma įvesti bent 3 simbolius
 ValidName,123456789123456789123456789123456789,123456789123456789123456789123456789,Slaptazodis per ilgas
 ValidName,ValidPassword123,InvalidPassword123,Įvesti slaptažodžiai nesutampa
  ,ValidPassword123,ValidPassword123,Laukas privalomas
-ValidName, , ,Laukas privalomas
+ValidName, ,ValidPassword123,Laukas privalomas
 1111,ValidPassword123,ValidPassword123,Prisijungimo vardas negali buti skaicius
 ****,ValidPassword123,ValidPassword123,Prisijungimo vardas negali buti simbolis

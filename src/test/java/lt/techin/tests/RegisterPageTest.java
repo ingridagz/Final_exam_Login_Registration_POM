@@ -53,5 +53,19 @@ public class RegisterPageTest extends BasePageTest {
         Assertions.assertEquals("Įvesti slaptažodžiai nesutampa", registerPage.getErrorSlaptazodzioPatvirtinimasText(), "No error message");
         log.info("'userWrongRegistrationTest' completed. Credentials: " + randomName + "/" + password + "/" + confirmPassword);
     }
+
+    @ParameterizedTest
+    @CsvFileSource(resources = "/data.csv", numLinesToSkip = 1)
+    void userRegistrationWithWrongCredentialsTest(String nameCsv, String passwordCsv, String passwordConfirmCsv, String messageErrCsv) {
+        log.info("'userRegistrationWithWrongCredentialsTest' initialized");
+        loginPage.clickSukurtiNaujaPaskyra();
+        registerPage.fillPrisijungimoVardas(Objects.requireNonNullElse(nameCsv, ""));
+        registerPage.fillSlaptazodis(Objects.requireNonNullElse(passwordCsv, ""));
+        registerPage.confirmSlaptazodis(Objects.requireNonNullElse(passwordConfirmCsv, ""));
+        registerPage.clickSukurti();
+        Assertions.assertTrue(registerPage.isErrorMessageDisplayed(messageErrCsv), "No error message");
+        System.out.println("Error message: " + messageErrCsv);
+        log.info("'userRegistrationWithWrongCredentialsTest' completed: "+nameCsv+" / "+passwordCsv+" / "+passwordConfirmCsv+" / "+messageErrCsv);
+    }
 }
 

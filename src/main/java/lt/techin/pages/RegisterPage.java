@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.slf4j.Logger;
 
+import java.util.List;
+
 import static java.lang.invoke.MethodHandles.lookup;
 import static org.slf4j.LoggerFactory.getLogger;
 
@@ -27,6 +29,9 @@ public class RegisterPage extends BasePage {
 
     @FindBy(xpath = "//form/input[@value='skaičiuoti']")
     WebElement buttonSkaiciuoti;
+
+    @FindBy(xpath = "//span")
+    List<WebElement> errorRegistrationMessages;
 
     public RegisterPage(WebDriver driver) {
         super(driver);
@@ -54,6 +59,9 @@ public class RegisterPage extends BasePage {
     public boolean isButtonSkaiciuotiDisplayed() {
            return buttonSkaiciuoti.isDisplayed();
     }
-
-
+    public boolean isErrorMessageDisplayed(String messageErr) {
+        return errorRegistrationMessages.stream()
+                .map(WebElement::getText)
+                .anyMatch(text -> text.equals(messageErr));
+    }
 }
